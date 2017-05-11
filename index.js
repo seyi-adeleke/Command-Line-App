@@ -18,6 +18,13 @@ if(process.argv.length === 2){
 */
 
 let getState = request('https://nigerian-states-info.herokuapp.com/api/states/'+ process.argv[2].toLowerCase() , function (error, response, data) {
+    if(error){
+        console.log("There is an error");
+        console.log(error);
+
+    }
+    else {
+    console.log("searching...");
     // parse the JSON data received
     let json = JSON.parse(data);
     //log a success message
@@ -36,6 +43,7 @@ let getState = request('https://nigerian-states-info.herokuapp.com/api/states/'+
     // if state is not found log a message to the user
     else{
         console.log("You inputed a wrong state name, please try again");
+    }
     }
 });
 
